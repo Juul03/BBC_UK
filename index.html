@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta
+      name="author"
+      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
+    />
+    <meta name="generator" content="Hugo 0.72.0" />
+    <title>Blog Template · Bootstrap</title>
+
+    <link
+      rel="canonical"
+      href="https://v5.getbootstrap.com/docs/5.0/examples/blog/"
+    />
+
+    <!-- Bootstrap core CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+      integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+      integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .news-card {
+            position: relative;
+            /* border: 1px solid #ddd; */
+            margin-bottom: 1rem;
+        }
+
+        .news-image {
+            width: 100%;
+            height: auto;
+        }
+
+        .news-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+
+        .news-description {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-meta {
+            font-size: 0.875rem;
+            color: #555;
+            display: flex;
+            /* justify-content: space-between; */
+            border-bottom: 1px solid #ddd;
+            padding: 0.5rem 0;
+        }
+
+        a {
+            text-decoration:none;
+            font-weight:bold;
+        }
+
+        a.active {
+            text-decoration: underline 3px;
+            text-underline-offset: .75rem;
+        }
+
+        a:hover {
+            background:lightgrey;
+            text-decoration:none;
+        }
+
+        /* .border-right {
+            border-right: 1px solid #ddd;
+        } */
+
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom styles for this template -->
+    <style>
+      /* stylelint-disable selector-list-comma-newline-after */
+
+      .blog-header {
+        line-height: 1;
+        border-bottom: 1px solid #e5e5e5;
+      }
+
+      .blog-header-logo {
+        font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+        font-size: 2.25rem;
+      }
+
+      .blog-header-logo:hover {
+        text-decoration: none;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+      }
+
+      .display-4 {
+        font-size: 2.5rem;
+      }
+
+      @media (min-width: 768px) {
+        .display-4 {
+          font-size: 3rem;
+        }
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .nav-scroller .nav-link {
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+        font-size: 0.875rem;
+      }
+
+      .card-img-right {
+        height: 100%;
+        border-radius: 0 3px 3px 0;
+      }
+
+      .flex-auto {
+        flex: 0 0 auto;
+      }
+
+      .h-250 {
+        height: 250px;
+      }
+
+      @media (min-width: 768px) {
+        .h-md-250 {
+          height: 250px;
+        }
+      }
+
+      /* Pagination */
+      .blog-pagination {
+        margin-bottom: 4rem;
+      }
+
+      .blog-pagination > .btn {
+        border-radius: 2rem;
+      }
+
+      /*
+        * Blog posts
+        */
+      .blog-post {
+        margin-bottom: 4rem;
+      }
+
+      .blog-post-title {
+        margin-bottom: 0.25rem;
+        font-size: 2.5rem;
+      }
+
+      .blog-post-meta {
+        margin-bottom: 1.25rem;
+        color: #727272;
+      }
+
+      /*
+        * Footer
+        */
+      .blog-footer {
+        padding: 2.5rem 0;
+        color: #727272;
+        text-align: center;
+        background-color: #f9f9f9;
+        border-top: 0.05rem solid #e5e5e5;
+      }
+
+      .blog-footer p:last-child {
+        margin-bottom: 0;
+      }
+
+      /* Header BBC logo */
+      .svg-small {
+        height:28px;
+      }
+
+      .btn-primary {
+        background:black;
+        border:black solid 1px;
+      }
+
+      .btn-primary:hover {
+        background:white;
+        color:black;
+        border:black solid 1px;
+      }
+
+      .btn-secundary {
+        background:white;
+        border:white solid 1px;
+      }
+
+      .btn-secundary:hover {
+        background:lightslategrey;
+        color:white;
+        border:lightslategrey solid 1px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <header class="blog-header py-3">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+          <div class="col-4 d-flex justify-content-start align-items-center">
+            <div>
+              <button
+                type="button"
+                class="btn btn-light"
+                data-toggle="collapse"
+                data-target="#navbar-collapse-1"
+              >
+                <span class="sr-only">Toggle navigation</span>
+                <svg
+                  viewBox="0 0 32 32"
+                  width="20"
+                  height="20"
+                  category="actions"
+                  icon="list-view-text"
+                  aria-hidden="true"
+                  class="sc-2c06e71a-0 fsMljb"
+                >
+                  <path
+                    d="M1 7.5h30V1.9H1v5.6zm0 22.6h30v-5.6H1v5.6zm0-11.3h30v-5.6H1v5.6z"
+                  ></path>
+                </svg>
+              </button>
+              <div class="navbar-collapse collapse" id="navbar-collapse-1">
+                <!-- Non-collapsing right-side icons -->
+                <ul class="nav navbar-nav">
+                  <li class="active">
+                    <a href="#">Home</a>
+                  </li>
+                  <li>
+                    <a href="#">News</a>
+                  </li>
+                  <li>
+                    <a href="#">Sport</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                      Dropdown
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">Innovation</a>
+                  </li>
+                  <li>
+                    <a href="#">Culture</a>
+                  </li>
+                  <li>
+                    <a href="#">Travel</a>
+                  </li>
+                  <li>
+                    <a href="#">Earth</a>
+                  </li>
+                  <li>
+                    <a href="#">Video</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <a class="link-secondary" href="#" aria-label="Search">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                class="mx-3"
+                role="img"
+                viewBox="0 0 24 24"
+              >
+                <title>Search</title>
+                <circle cx="10.5" cy="10.5" r="7.5" />
+                <path d="M21 21l-5.2-5.2" />
+              </svg>
+            </a>
+          </div>
+          <div class="col-4 text-center">
+            <a class="blog-header-logo text-dark" href="#">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 112 32"
+                category="logo"
+                icon="bbc"
+                class="sc-1097f7fe-0 jbvZzi svg-small"
+              >
+                <title>British Broadcasting Corporation</title>
+                <path
+                  d="M111.99999,4.44444577e-05 L111.99999,32.0000444 L79.9999905,32.0000444 L79.9999905,4.44444577e-05 L111.99999,4.44444577e-05 Z M72.0000119,-3.55271368e-15 L72.0000119,32 L40.0000119,32 L40.0000119,-3.55271368e-15 L72.0000119,-3.55271368e-15 Z M32,-3.55271368e-15 L32,32 L-1.13686838e-13,32 L-1.13686838e-13,-3.55271368e-15 L32,-3.55271368e-15 Z M97.469329,6.80826869 C96.0294397,6.80826869 94.7294393,7.02226876 93.5693278,7.44982444 C92.4089942,7.87782457 91.4137717,8.49471364 90.5841047,9.30049166 C89.7538823,10.1067141 89.1188821,11.07327 88.6785486,12.199937 C88.2378818,13.3269373 88.0177706,14.5896043 88.0177706,15.9876048 C88.0177706,17.4188274 88.2296596,18.7062722 88.6531042,19.8493837 C89.0763265,20.9929396 89.6861045,21.9591621 90.482438,22.748829 C91.2784383,23.5383848 92.2522163,24.1430516 93.4042167,24.5624962 C94.5558837,24.9819408 95.8516619,25.1917186 97.2914401,25.1917186 C98.3752182,25.1917186 99.4086629,25.072163 100.391219,24.8338296 C101.37333,24.5956073 102.237108,24.2706072 102.982664,23.8592738 L102.982664,23.8592738 L102.982664,20.4292727 C101.40733,21.4001619 99.6881074,21.8851621 97.8251069,21.8851621 C96.6054399,21.8851621 95.567884,21.6549398 94.7126615,21.194273 C93.8572168,20.7338284 93.2049944,20.0633837 92.7564387,19.1831613 C92.3073275,18.3032721 92.0831052,17.2380496 92.0831052,15.9876048 C92.0831052,14.7377155 92.3156608,13.6766041 92.7816609,12.8044927 C93.2474389,11.9327147 93.916328,11.2664922 94.7888838,10.8058254 C95.6609951,10.3453809 96.715551,10.1148252 97.9521069,10.1148252 C98.8496628,10.1148252 99.7052186,10.2342697 100.518108,10.4726031 C101.331219,10.7112699 102.084664,11.0609366 102.779442,11.5212701 L102.779442,11.5212701 L102.779442,8.01738016 C102.017219,7.62260227 101.191441,7.32260218 100.302219,7.11671323 C99.4129963,6.91126872 98.4685515,6.80826869 97.469329,6.80826869 Z M55.7552388,7.00000208 L49.0000146,7.00000208 L49.0000146,25.0000021 L56.1713501,25.0000021 C57.590906,25.0000021 58.8063508,24.7903407 59.8181289,24.3706739 C60.8297959,23.9513405 61.6087961,23.3553403 62.1555741,22.5832289 C62.7020187,21.8114509 62.9754632,20.8882284 62.9754632,19.8140059 C62.9754632,18.7232278 62.6941298,17.7960053 62.1312407,17.0321162 C61.5681294,16.2686715 60.7563514,15.7104491 59.6957955,15.3580046 C60.4625736,14.9891156 61.0420182,14.4894488 61.4335738,13.8601152 C61.8252406,13.2307817 62.0210185,12.4881148 62.0210185,11.6321146 C62.0210185,10.1385586 61.4742405,8.99311379 60.3812402,8.19578022 C59.2877954,7.39889109 57.745795,7.00000208 55.7552388,7.00000208 L55.7552388,7.00000208 Z M15.7552269,7.00000208 L9.00000268,7.00000208 L9.00000268,25.0000021 L16.1713381,25.0000021 C17.5908941,25.0000021 18.8062278,24.7903407 19.8182281,24.3706739 C20.8296729,23.9513405 21.6087842,23.3553403 22.1555621,22.5832289 C22.7021179,21.8114509 22.9755624,20.8882284 22.9755624,19.8140059 C22.9755624,18.7232278 22.6941179,17.7960053 22.1311177,17.0321162 C21.5682286,16.2686715 20.7563395,15.7104491 19.6957836,15.3580046 C20.4625616,14.9891156 21.0418952,14.4894488 21.4335619,13.8601152 C21.8252287,13.2307817 22.0210066,12.4881148 22.0210066,11.6321146 C22.0210066,10.1385586 21.4741175,8.99311379 20.3811172,8.19578022 C19.2877835,7.39889109 17.7457831,7.00000208 15.7552269,7.00000208 L15.7552269,7.00000208 Z M55.8775833,17.2209385 C58.1128062,17.2209385 59.2308065,18.0434943 59.2308065,19.6881614 C59.2308065,20.4602728 58.9369175,21.0518285 58.3496951,21.4629397 C57.7622505,21.8743843 56.9216947,22.0797177 55.8286944,22.0797177 L55.8286944,22.0797177 L52.6469157,22.0797177 L52.6469157,17.2209385 Z M15.8775714,17.2209385 C18.1129054,17.2209385 19.2307946,18.0434943 19.2307946,19.6881614 C19.2307946,20.4602728 18.9370167,21.0518285 18.3496832,21.4629397 C17.7622386,21.8743843 16.9216828,22.0797177 15.8286825,22.0797177 L15.8286825,22.0797177 L12.6469038,22.0797177 L12.6469038,17.2209385 Z M55.412572,9.92028073 C57.3541282,9.92028073 58.3252396,10.6338365 58.3252396,12.0600591 C58.3252396,12.7988371 58.0763506,13.373504 57.5786838,13.7846152 C57.0807948,14.1960598 56.3587946,14.4013932 55.412572,14.4013932 L55.412572,14.4013932 L52.6469046,14.4013932 L52.6469046,9.92028073 Z M15.4125601,9.92028073 C17.3541163,9.92028073 18.3252277,10.6338365 18.3252277,12.0600591 C18.3252277,12.7988371 18.0762276,13.373504 17.5786719,13.7846152 C17.0807829,14.1960598 16.3587826,14.4013932 15.4125601,14.4013932 L15.4125601,14.4013932 L12.6468927,14.4013932 L12.6468927,9.92028073 Z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+          <div class="col-4 d-flex justify-content-end align-items-center">
+            <a class="btn btn-primary font-weight-bold mr-3" href="#">Register</a>
+            <a class="btn btn-secundary font-weight-bold" href="#">Sign up</a>
+          </div>
+        </div>
+      </header>
+
+      <div class="nav mb-2 border-bottom d-none d-lg-flex">
+            <nav class="nav d-flex justify-content-between m-auto">
+                <a class="p-2 link-dark active" href="#"><small>Home</small></a>
+                <a class="p-2 link-dark" href="#"><small>News</small></a>
+                <a class="p-2 link-dark" href="#"><small>Sport</small></a>
+                <a class="p-2 link-dark" href="#"><small>Business</small></a>
+                <a class="p-2 link-dark" href="#"><small>Innovation</small></a>
+                <a class="p-2 link-dark" href="#"><small>Culture</small></a>
+                <a class="p-2 link-dark" href="#"><small>Travel</small></a>
+                <a class="p-2 link-dark" href="#"><small>Opinion</small></a>
+                <a class="p-2 link-dark border-right px-2" href="#"><small>Earth</small></a>
+                <a class="p-2 link-dark" href="#"><small>Video</small></a>
+                <a class="p-2 link-dark" href="#"><small>Live</small></a>
+            </nav>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <!-- First column -->
+                <div class="col-lg-3 col-sm-4 mb-4 order-sm-1 order-lg-1 order-2">
+                    <div class="news-card">
+                        <img src="sources\img\KamalaHarrisTakeAways.webp" class="news-image" alt="News Image 1">
+                        <div>
+                            <div class="news-title">Four takeaways from the Kamala Harris's convention speech</div>
+                            <div class="news-description">The Vice-President hit the key notes her campaign wanted - but her vision for the future lacked detail.</div>
+                            <div class="news-meta">
+                                <span class="border-right pr-2">1 hour ago</span>
+                                <span class="pl-2">US & Canada</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="news-card">
+                        <img src="sources\img\KamalaHarrisJourney.webp" class="news-image" alt="News Image 1">
+                        <div>
+                            <div class="news-title">Kamala Harris on het journey and hopes for the US</div>
+                            <div class="news-description">The Vice-President said electing her as president would "chart a new way forward".</div>
+                            <div class="news-meta">
+                                <span class="border-right pr-2">1 hour ago</span>
+                                <span class="pl-2">US & Canada</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Second column -->
+                <div class="col-lg-6 col-sm-8 mb-4 order-sm-2 order-lg-2 order-1">
+                    <div class="news-card">
+                        <img src="sources\img\KamalaHarris.webp" class="news-image" alt="News Image 2">
+                        <div>
+                            <div class="news-title">Kamala Harris pledges 'new way forward' in historic convention speech</div>
+                            <div class="news-description">The Democrat formally becomes the first black and Asian-American woman to lead a major presidential ticket.</div>
+                            <div class="news-meta">
+                                <span class="border-right pr-2">8 hours ago</span>
+                                <span class="pl-2">Europe</span>
+                            </div>
+                            <div class="pt-2">
+                                <ul>
+                                    <li class="font-weight-bold mb-2">Kamala Harris convention speech fact-checked</li>
+                                    <li class="font-weight-bold mb-2">Democrats reject Gaza protesters' demand to give speaking slot to Palestinian</li>
+                                    <li class="font-weight-bold mb-2">Where Kamala Harris stands on 10 key issues</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Third column -->
+                <div class="container col-lg-3 col-sm-12 mb-4 order-lg-3 order-3">
+                    <div class="col row mb-2">
+                        <div class="col-lg-12 col-md-6">
+                            <div class="news-card">
+                                <div>
+                                    <div class="news-title">Trump lashes out as DNC</div>
+                                    <div class="news-description">The biggest concern for aides is keeping him focused on the issues and off controversial personal attacks.</div>
+                                    <div class="news-meta">
+                                        <span class="border-right pr-2">8 hours ago</span>
+                                        <span class="pl-2">Us & Canada</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="col-lg-12 col-md-6">
+                            <div class="news-card">
+                                <div>
+                                    <div class="news-title">Diplomatic tightrope for Modi as he visits Kyiv after Moscow</div>
+                                    <div class="news-description">Modi is visiting Ukraine just weeks after his Russia trip. Is it a balancing act or is there something more?</div>
+                                    <div class="news-meta">
+                                        <span class="border-right pr-2">3 hours ago</span>
+                                        <span class="pl-2">World</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="col-lg-12 col-md-6">
+                            <div class="news-card">
+                                <div>
+                                    <div class="news-title">Australian Court rules in landmark case that asked 'what is a woman?'</div>
+                                    <div class="news-description">Roxanne Tickle has won a landmark case which questioned who can legally claim to be a woman.</div>
+                                    <div class="news-meta">
+                                        <span class="border-right pr-2">9 hours ago</span>
+                                        <span class="pl-2">Australia</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="col-lg-12 col-md-6">
+                            <div class="news-card">
+                                <div>
+                                    <div class="news-title">Chinese scammers cheated victims from Isle of Man base</div>
+                                    <div class="news-description">A seaside hotel and office block were used by scam artists who tricked people out of millions of dollars.</div>
+                                    <div class="news-meta">
+                                        <span class="border-right pr-2">10 hours ago</span>
+                                        <span class="pl-2">Asia</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- <div class="col-lg-3 col-sm-12 mb-4 order-lg-3 order-3">
+                    <div class="news-card">
+                        <div>
+                            <div class="news-title">Trump lashes out as DNC</div>
+                            <div class="news-description">The biggest concern for aides is keeping him focused on the issues and off controversial personal attacks.</div>
+                            <div class="news-meta">
+                                <span class="border-right pr-2">8 hours ago</span>
+                                <span class="pl-2">Us & Canada</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="news-card">
+                        <div>
+                            <div class="news-title">Diplomatic tightrope for Modi as he visits Kyiv after Moscow</div>
+                            <div class="news-description">Modi is visiting Ukraine just weeks after his Russia trip. Is it a balancing act or is there something more?</div>
+                            <div class="news-meta">
+                                <span class="border-right pr-2">3 hours ago</span>
+                                <span class="pl-2">World</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="news-card">
+                        <div>
+                            <div class="news-title">Australian Court rules in landmark case that asked 'what is a woman?'</div>
+                            <div class="news-description">Roxanne Tickle has won a landmark case which questioned who can legally claim to be a woman.</div>
+                            <div class="news-meta">
+                                <span class="border-right pr-2">9 hours ago</span>
+                                <span class="pl-2">Australia</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="news-card">
+                        <div>
+                            <div class="news-title">Chinese scammers cheated victims from Isle of Man base</div>
+                            <div class="news-description">A seaside hotel and office block were used by scam artists who tricked people out of millions of dollars.</div>
+                            <div class="news-meta">
+                                <span class="border-right pr-2">10 hours ago</span>
+                                <span class="pl-2">Asia</span>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+
+          <!-- <h1 class="display-4 font-italic">
+            Kamala Harris pledges 'new way forward' in historic convention speech
+          </h1>
+          <p class="lead my-3">
+            The Democrat formally becomes the first black and Asian-American woman to lead a major presidential ticket
+          </p>
+          <p class="lead mb-0">
+            <a href="#" class="text-white font-weight-bold"
+              >Continue reading...</a
+            >
+          </p> -->
+        </div>
+      </div>
+
+      <!-- <div class="row mb-2">
+        <div class="col-md-6">
+          <div
+            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
+          >
+            <div class="col p-4 d-flex flex-column position-static">
+              <strong class="d-inline-block mb-2 text-primary">World</strong>
+              <h3 class="mb-0">Featured post</h3>
+              <div class="mb-1 text-muted">Nov 12</div>
+              <p class="card-text mb-auto">
+                This is a wider card with supporting text below as a natural
+                lead-in to additional content.
+              </p>
+              <a href="#" class="stretched-link">Continue reading</a>
+            </div>
+            <div class="col-auto d-none d-lg-block">
+              <svg
+                class="bd-placeholder-img"
+                width="200"
+                height="250"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-label="Placeholder: Thumbnail"
+                preserveAspectRatio="xMidYMid slice"
+                role="img"
+                focusable="false"
+              >
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#55595c" />
+                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div
+            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
+          >
+            <div class="col p-4 d-flex flex-column position-static">
+              <strong class="d-inline-block mb-2 text-success">Design</strong>
+              <h3 class="mb-0">Post title</h3>
+              <div class="mb-1 text-muted">Nov 11</div>
+              <p class="mb-auto">
+                This is a wider card with supporting text below as a natural
+                lead-in to additional content.
+              </p>
+              <a href="#" class="stretched-link">Continue reading</a>
+            </div>
+            <div class="col-auto d-none d-lg-block">
+              <svg
+                class="bd-placeholder-img"
+                width="200"
+                height="250"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-label="Placeholder: Thumbnail"
+                preserveAspectRatio="xMidYMid slice"
+                role="img"
+                focusable="false"
+              >
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#55595c" />
+                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+
+    <main class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h3 class="pb-4 mb-4 font-italic border-bottom">From the Firehose</h3>
+
+          <div class="blog-post">
+            <h2 class="blog-post-title">Sample blog post</h2>
+            <p class="blog-post-meta">
+              January 1, 2014 by <a href="#">Mark</a>
+            </p>
+
+            <p>
+              This blog post shows a few different types of content that’s
+              supported and styled with Bootstrap. Basic typography, images, and
+              code are all supported.
+            </p>
+            <hr />
+            <p>
+              Cum sociis natoque penatibus et magnis
+              <a href="#">dis parturient montes</a>, nascetur ridiculus mus.
+              Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis
+              vestibulum. Sed posuere consectetur est at lobortis. Cras mattis
+              consectetur purus sit amet fermentum.
+            </p>
+            <blockquote>
+              <p>
+                Curabitur blandit tempus porttitor.
+                <strong>Nullam quis risus eget urna mollis</strong> ornare vel
+                eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.
+              </p>
+            </blockquote>
+            <p>
+              Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras
+              mattis consectetur purus sit amet fermentum. Aenean lacinia
+              bibendum nulla sed consectetur.
+            </p>
+            <h2>Heading</h2>
+            <p>
+              Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+              auctor. Duis mollis, est non commodo luctus, nisi erat porttitor
+              ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac
+              consectetur ac, vestibulum at eros.
+            </p>
+            <h3>Sub-heading</h3>
+            <p>
+              Cum sociis natoque penatibus et magnis dis parturient montes,
+              nascetur ridiculus mus.
+            </p>
+            <pre><code>Example code block</code></pre>
+            <p>
+              Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem
+              malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus
+              commodo, tortor mauris condimentum nibh, ut fermentum massa.
+            </p>
+            <h3>Sub-heading</h3>
+            <p>
+              Cum sociis natoque penatibus et magnis dis parturient montes,
+              nascetur ridiculus mus. Aenean lacinia bibendum nulla sed
+              consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce
+              dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
+              ut fermentum massa justo sit amet risus.
+            </p>
+            <ul>
+              <li>
+                Praesent commodo cursus magna, vel scelerisque nisl consectetur
+                et.
+              </li>
+              <li>Donec id elit non mi porta gravida at eget metus.</li>
+              <li>Nulla vitae elit libero, a pharetra augue.</li>
+            </ul>
+            <p>
+              Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae
+              elit libero, a pharetra augue.
+            </p>
+            <ol>
+              <li>Vestibulum id ligula porta felis euismod semper.</li>
+              <li>
+                Cum sociis natoque penatibus et magnis dis parturient montes,
+                nascetur ridiculus mus.
+              </li>
+              <li>
+                Maecenas sed diam eget risus varius blandit sit amet non magna.
+              </li>
+            </ol>
+            <p>
+              Cras mattis consectetur purus sit amet fermentum. Sed posuere
+              consectetur est at lobortis.
+            </p>
+          </div>
+          <!-- /.blog-post -->
+
+          <div class="blog-post">
+            <h2 class="blog-post-title">Another blog post</h2>
+            <p class="blog-post-meta">
+              December 23, 2013 by <a href="#">Jacob</a>
+            </p>
+
+            <p>
+              Cum sociis natoque penatibus et magnis
+              <a href="#">dis parturient montes</a>, nascetur ridiculus mus.
+              Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis
+              vestibulum. Sed posuere consectetur est at lobortis. Cras mattis
+              consectetur purus sit amet fermentum.
+            </p>
+            <blockquote>
+              <p>
+                Curabitur blandit tempus porttitor.
+                <strong>Nullam quis risus eget urna mollis</strong> ornare vel
+                eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.
+              </p>
+            </blockquote>
+            <p>
+              Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras
+              mattis consectetur purus sit amet fermentum. Aenean lacinia
+              bibendum nulla sed consectetur.
+            </p>
+            <p>
+              Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor
+              auctor. Duis mollis, est non commodo luctus, nisi erat porttitor
+              ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac
+              consectetur ac, vestibulum at eros.
+            </p>
+          </div>
+          <!-- /.blog-post -->
+
+          <div class="blog-post">
+            <h2 class="blog-post-title">New feature</h2>
+            <p class="blog-post-meta">
+              December 14, 2013 by <a href="#">Chris</a>
+            </p>
+
+            <p>
+              Cum sociis natoque penatibus et magnis dis parturient montes,
+              nascetur ridiculus mus. Aenean lacinia bibendum nulla sed
+              consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce
+              dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
+              ut fermentum massa justo sit amet risus.
+            </p>
+            <ul>
+              <li>
+                Praesent commodo cursus magna, vel scelerisque nisl consectetur
+                et.
+              </li>
+              <li>Donec id elit non mi porta gravida at eget metus.</li>
+              <li>Nulla vitae elit libero, a pharetra augue.</li>
+            </ul>
+            <p>
+              Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras
+              mattis consectetur purus sit amet fermentum. Aenean lacinia
+              bibendum nulla sed consectetur.
+            </p>
+            <p>
+              Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae
+              elit libero, a pharetra augue.
+            </p>
+          </div>
+          <!-- /.blog-post -->
+
+          <nav class="blog-pagination">
+            <a class="btn btn-outline-primary" href="#">Older</a>
+            <a
+              class="btn btn-outline-secondary disabled"
+              href="#"
+              tabindex="-1"
+              aria-disabled="true"
+              >Newer</a
+            >
+          </nav>
+        </div>
+
+        <aside class="col-md-4">
+          <div class="p-4 mb-3 bg-light rounded">
+            <h4 class="font-italic">About</h4>
+            <p class="mb-0">
+              Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras
+              mattis consectetur purus sit amet fermentum. Aenean lacinia
+              bibendum nulla sed consectetur.
+            </p>
+          </div>
+
+          <div class="p-4">
+            <h4 class="font-italic">Archives</h4>
+            <ol class="list-unstyled mb-0">
+              <li><a href="#">March 2014</a></li>
+              <li><a href="#">February 2014</a></li>
+              <li><a href="#">January 2014</a></li>
+              <li><a href="#">December 2013</a></li>
+              <li><a href="#">November 2013</a></li>
+              <li><a href="#">October 2013</a></li>
+              <li><a href="#">September 2013</a></li>
+              <li><a href="#">August 2013</a></li>
+              <li><a href="#">July 2013</a></li>
+              <li><a href="#">June 2013</a></li>
+              <li><a href="#">May 2013</a></li>
+              <li><a href="#">April 2013</a></li>
+            </ol>
+          </div>
+
+          <div class="p-4">
+            <h4 class="font-italic">Elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">GitHub</a></li>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">Facebook</a></li>
+            </ol>
+          </div>
+        </aside>
+      </div>
+      <!-- /.row -->
+    </main>
+    <!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>
+        Blog template built for
+        <a href="https://getbootstrap.com/">Bootstrap</a> by
+        <a href="https://twitter.com/mdo">@mdo</a>.
+      </p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+  </body>
+</html>
